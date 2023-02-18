@@ -1,0 +1,30 @@
+﻿@model CapaNegocio.Entities.AFICION
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+<h4>El registro se eliminará, desea continuar?</h4>
+<br />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AFI_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFI_NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>

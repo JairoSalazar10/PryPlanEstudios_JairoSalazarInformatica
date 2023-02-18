@@ -1,0 +1,50 @@
+﻿@model CapaNegocio.Entities.PLAN_MATERIA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div>
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            Código Plan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLAN.PLA_CODIGO)
+        </dd>
+        
+        <dt>
+           Plan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLAN.PLA_NOMBRE)
+        </dd>
+        <dt>
+            Código Materia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.MAT_CODIGO)
+        </dd>
+        
+        <dt>
+           Materia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.MAT_NOMBRE)
+        </dd>
+        <dt>
+            Nivel
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.MAT_NIVEL)
+        </dd>
+    </dl>
+</div>

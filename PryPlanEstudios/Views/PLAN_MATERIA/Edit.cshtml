@@ -1,0 +1,43 @@
+﻿@model CapaNegocio.Entities.PLAN_MATERIA
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PLM_ID)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Plan</label>
+            <div class="col-md-10">
+                @Html.DropDownList("PLA_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PLA_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Materia</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MAT_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MAT_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+

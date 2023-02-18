@@ -1,0 +1,221 @@
+﻿
+@{
+    ViewBag.Title = "RepFacultadxEstudiante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Facultad por Estudiante</h3>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+
+            <label class="control-label col-md-1">Gráfico:</label>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                @{
+                    List<SelectListItem> listgraf = new List<SelectListItem>();
+                    listgraf.Add(new SelectListItem
+                    {
+                        Text = "Barra",
+                        Value = "1"
+                    });
+                    listgraf.Add(new SelectListItem
+                    {
+                        Text = "Pastel",
+                        Value = "2",
+                    });
+                }
+                @Html.DropDownList("cmb_grafico", new SelectList(listgraf, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+            </div>
+            <button type="submit" id="btn_buscar" class="btn btn-primary" style="margin-right: 5px;"><i class="fa fa-search"></i> Buscar</button>
+
+        </div>
+
+    </div>
+    <br />
+    <br />
+
+
+    <div class="form-group">
+        <div class="col-lg-12">
+            <div class="panel panel-default" id="div_grafico">
+                <div class="panel-heading">
+                    Gráfico
+                </div>
+                <div class="panel-body">
+                    <div Style="font-family: Corbel; font-size: small; text-align: center" class="row">
+                        <div style="font-weight: 100%; height: 100%">
+                            <canvas id="myChart" style="padding: 0; margin: auto; display: block;"> </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="divProcessing" class="modal">
+
+    <div class="center">
+        <img src="~/Content/images/loading.gif" />
+        <p class="texto">Procesando, espere por favor...</p>
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript" src="~/Content/vendor/chart/Chart.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var ctx = document.getElementById('chart2');
+        });
+
+        $('#btn_buscar').click(function () {
+
+            var cmb_grafico = $('#cmb_grafico :selected').val();
+            var valor = 1;
+            $.ajax({
+                url: '@Url.Action("RepFacultadxEstudiante", "REPORTEs")',
+                type: "post",
+                data: "{ 'i':'" + valor + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result.length > 0) {
+
+                        if (cmb_grafico == "1") {
+                            CargaGraficoBarras(result);
+                        } else {
+                            CargaGraficoPie(result);
+                        }
+                        $('#div_grafico').show();
+                    } else {
+
+
+                        $('#div_grafico').hide();
+                        $("#divProcessing").hide();
+                    }
+                    $("#divProcessing").hide();
+                },
+                error: function (result) {
+                    $("#divProcessing").hide();
+                }
+            });
+        });
+
+        //Grafico Barras
+        function CargaGraficoBarras(data) {
+
+            var aData = data;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            //var aDatasets2 = aData[2];
+            var dataT = {
+                labels: aLabels,
+                datasets: [
+                    {
+                        label: " Total",
+                        data: aDatasets1,
+                        fill: true,
+                        backgroundColor: poolColors(aDatasets1.length),
+                        borderWidth: 2
+                    }
+                ]
+            };
+
+
+            var ctx = $("#myChart").get(0).getContext("2d");
+
+            if (window.myNewChart != undefined)
+                window.myNewChart.destroy();
+
+
+            window.myNewChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: false, text: 'Total' },
+                    legend: { position: 'top', display: false },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                autoSkip: false
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        //Grafico pastel
+        function CargaGraficoPie(data) {
+            var aData = data;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var aDatasets2 = aData[2];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: aLabels,
+                    data: aDatasets1,
+                    fill: true,
+                    backgroundColor: poolColors(aDatasets1.length),
+                    //borderColor: "rgb(11, 98, 164)",
+                    borderWidth: 2
+                }],
+            };
+
+            var ctx = $("#myChart").get(0).getContext("2d");
+            if (window.myNewChart != undefined)
+                window.myNewChart.destroy();
+
+
+            window.myNewChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: true, text: '' },
+                    legend: { position: 'top', display: true }
+
+                }
+            });
+
+        }
+
+        function dynamicColors() {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgba(" + r + "," + g + "," + b + ", 0.7)";
+        }
+
+
+        function poolColors(a) {
+            var pool = [];
+            for (i = 0; i < a; i++) {
+                pool.push(dynamicColors());
+            }
+            return pool;
+        }
+
+    </script>
+}
+

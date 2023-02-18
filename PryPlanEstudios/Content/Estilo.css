@@ -1,0 +1,80 @@
+﻿.area {
+    border-radius: 5px;
+}
+
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(243, 244, 245, 0.77);
+    z-index: 99999;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    text-align: "center";
+}
+
+.texto {
+    font-weight: bold;
+}
+
+.disabled_link {
+    pointer-events: none;
+}
+
+
+.titulo {
+    /*background-color: #49A7C0;
+    border-color: #49A7C0;*/
+    background-color: #CDCDCD;
+    border-color: #CDCDCD;
+    text-align: center;
+    padding: 20px;
+    /*color: #FFFFFF;*/
+    color: #000;
+    /*font-weight: bold;*/
+    font-size: 24px;
+}
+
+.subtitulotd {
+    background-color: #CDCDCD;
+    color: #000;
+    font-weight: bold;
+   
+}
+
+.centrartd {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.tablesinborde {
+    border: 0;
+    border-top: 0px solid #FFFFFF !important;
+}
+
+/*Salto de pagina siempre*/
+.page-break-before {
+    page-break-before: always;
+}
+
+.no-page-break-inside {
+    page-break-before: auto;
+    page-break-inside: avoid;
+}
+
+.bordebottom {
+    border-bottom: 1px solid #000 !important;
+}
+
+.multiselect-container{
+
+  max-height:200px;
+  overflow:auto;
+}

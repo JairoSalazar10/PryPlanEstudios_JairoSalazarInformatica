@@ -1,0 +1,136 @@
+﻿@model CapaNegocio.Entities.ESTUDIANTE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+<h4>El registro se eliminará, desea continuar?</h4>
+<br />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_APELLIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_APELLIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_FNACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_FNACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_SEXO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_SEXO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_TEL_DOMICILIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_TEL_DOMICILIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_TEL_CELULAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_TEL_CELULAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_DIRECCION)
+        </dd>
+
+        Afición
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFICION.AFI_NOMBRE)
+        </dd>
+
+        <dt>
+            Asociación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASOCIACION.ASO_NOMBRE)
+        </dd>
+
+        <dt>
+           Motivación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTIVACION.MOT_NOMBRE)
+        </dd>
+
+        <dt>
+           Plan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLAN.PLA_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_OBSERVACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_OBSERVACION)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>

@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PLANESTUDIOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AFICION">
+          <Key>
+            <PropertyRef Name="AFI_ID" />
+          </Key>
+          <Property Name="AFI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AFI_NOMBRE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ASOCIACION">
+          <Key>
+            <PropertyRef Name="ASO_ID" />
+          </Key>
+          <Property Name="ASO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASO_NOM" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAR_CODIGO" Type="varchar" MaxLength="50" />
+          <Property Name="CAR_NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="FAC_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="COLEGIO">
+          <Key>
+            <PropertyRef Name="COL_ID" />
+          </Key>
+          <Property Name="COL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL_NOMBRE" Type="varchar(max)" />
+          <Property Name="COL_CIUDAD" Type="varchar(max)" />
+          <Property Name="TPC_ID" Type="int" />
+          <Property Name="COL_EMAIL_PERSONAL" Type="varchar" MaxLength="50" />
+          <Property Name="COL_ANIO_GRADO" Type="int" />
+          <Property Name="COL_PENSION" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="COL_PUNTAJE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MEN_ID" Type="int" />
+          <Property Name="EST_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ESTUDIANTE">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_CEDULA" Type="varchar" MaxLength="12" />
+          <Property Name="EST_NOMBRES" Type="varchar(max)" />
+          <Property Name="EST_APELLIDOS" Type="varchar(max)" />
+          <Property Name="EST_FNACIMIENTO" Type="date" />
+          <Property Name="EST_SEXO" Type="varchar" MaxLength="50" />
+          <Property Name="PLA_ID" Type="int" />
+          <Property Name="EST_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="EST_TEL_DOMICILIO" Type="varchar" MaxLength="50" />
+          <Property Name="EST_TEL_CELULAR" Type="varchar" MaxLength="50" />
+          <Property Name="EST_DIRECCION" Type="varchar(max)" />
+          <Property Name="EST_OBSERVACION" Type="varchar(max)" />
+          <Property Name="AFI_ID" Type="int" />
+          <Property Name="ASO_ID" Type="int" />
+          <Property Name="MOT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="FACULTAD">
+          <Key>
+            <PropertyRef Name="FAC_ID" />
+          </Key>
+          <Property Name="FAC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAC_CODIGO" Type="varchar" MaxLength="50" />
+          <Property Name="FAC_NOMBRE" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOG_MODULO" Type="varchar" MaxLength="100" />
+          <Property Name="LOG_USUARIO" Type="varchar" MaxLength="100" />
+          <Property Name="LOG_TRANSACCION" Type="varchar" MaxLength="100" />
+          <Property Name="LOG_FECHA_REGISTRO" Type="datetime" />
+          <Property Name="LOG_FECHA_EDICION" Type="datetime" />
+          <Property Name="LOG_FECHA_ELIMINACION" Type="datetime" />
+          <Property Name="LOG_DIRECCIONIP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Name="MAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAT_CODIGO" Type="varchar" MaxLength="50" />
+          <Property Name="MAT_NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="MAT_NIVEL" Type="int" />
+        </EntityType>
+        <EntityType Name="MENSION">
+          <Key>
+            <PropertyRef Name="MEN_ID" />
+          </Key>
+          <Property Name="MEN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEN_NOMBRE" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MOTIVACION">
+          <Key>
+            <PropertyRef Name="MOT_ID" />
+          </Key>
+          <Property Name="MOT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MOT_NOMBRE" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="PLAN">
+          <Key>
+            <PropertyRef Name="PLA_ID" />
+          </Key>
+          <Property Name="PLA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLA_CODIGO" Type="varchar" MaxLength="50" />
+          <Property Name="PLA_NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="CAR_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PLAN_MATERIA">
+          <Key>
+            <PropertyRef Name="PLM_ID" />
+          </Key>
+          <Property Name="PLM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLA_ID" Type="int" />
+          <Property Name="MAT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ROL_ID" />
+          </Key>
+          <Property Name="ROL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROL_NOMBRE" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="TIPO_COLEGIO">
+          <Key>
+            <PropertyRef Name="TPC_ID" />
+          </Key>
+          <Property Name="TPC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TPC_NOMBRE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USU_ID" />
+          </Key>
+          <Property Name="USU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USU_NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="USU_USUARIO" Type="varchar" MaxLength="50" />
+          <Property Name="USU_CONTRASENIA" Type="varchar" MaxLength="50" />
+          <Property Name="ROL_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_CARRERA_FACULTAD">
+          <End Role="FACULTAD" Type="Self.FACULTAD" Multiplicity="0..1" />
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTAD">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="CARRERA">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_ESTUDIANTE">
+          <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="0..1" />
+          <End Role="COLEGIO" Type="Self.COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_MENSION">
+          <End Role="MENSION" Type="Self.MENSION" Multiplicity="0..1" />
+          <End Role="COLEGIO" Type="Self.COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENSION">
+              <PropertyRef Name="MEN_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="MEN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_TIPO_COLEGIO">
+          <End Role="TIPO_COLEGIO" Type="Self.TIPO_COLEGIO" Multiplicity="0..1" />
+          <End Role="COLEGIO" Type="Self.COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_COLEGIO">
+              <PropertyRef Name="TPC_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="TPC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_AFICION">
+          <End Role="AFICION" Type="Self.AFICION" Multiplicity="0..1" />
+          <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AFICION">
+              <PropertyRef Name="AFI_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="AFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_ASOCIACION">
+          <End Role="ASOCIACION" Type="Self.ASOCIACION" Multiplicity="0..1" />
+          <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASOCIACION">
+              <PropertyRef Name="ASO_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="ASO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_MOTIVACION">
+          <End Role="MOTIVACION" Type="Self.MOTIVACION" Multiplicity="0..1" />
+          <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTIVACION">
+              <PropertyRef Name="MOT_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="MOT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_PLAN">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="0..1" />
+          <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="PLA_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="PLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_CARRERA">
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="0..1" />
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="CAR_ID" />
+            </Principal>
+            <Dependent Role="PLAN">
+              <PropertyRef Name="CAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MATERIA_MATERIA">
+          <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="0..1" />
+          <End Role="PLAN_MATERIA" Type="Self.PLAN_MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="MAT_ID" />
+            </Principal>
+            <Dependent Role="PLAN_MATERIA">
+              <PropertyRef Name="MAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MATERIA_PLAN">
+          <End Role="PLAN" Type="Self.PLAN" Multiplicity="0..1" />
+          <End Role="PLAN_MATERIA" Type="Self.PLAN_MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="PLA_ID" />
+            </Principal>
+            <Dependent Role="PLAN_MATERIA">
+              <PropertyRef Name="PLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ROL_ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PLANESTUDIOModelStoreContainer">
+          <EntitySet Name="AFICION" EntityType="Self.AFICION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASOCIACION" EntityType="Self.ASOCIACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLEGIO" EntityType="Self.COLEGIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTUDIANTE" EntityType="Self.ESTUDIANTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACULTAD" EntityType="Self.FACULTAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG" EntityType="Self.LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIA" EntityType="Self.MATERIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MENSION" EntityType="Self.MENSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOTIVACION" EntityType="Self.MOTIVACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAN" EntityType="Self.PLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAN_MATERIA" EntityType="Self.PLAN_MATERIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_COLEGIO" EntityType="Self.TIPO_COLEGIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CARRERA_FACULTAD" Association="Self.FK_CARRERA_FACULTAD">
+            <End Role="FACULTAD" EntitySet="FACULTAD" />
+            <End Role="CARRERA" EntitySet="CARRERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_ESTUDIANTE" Association="Self.FK_COLEGIO_ESTUDIANTE">
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_MENSION" Association="Self.FK_COLEGIO_MENSION">
+            <End Role="MENSION" EntitySet="MENSION" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_TIPO_COLEGIO" Association="Self.FK_COLEGIO_TIPO_COLEGIO">
+            <End Role="TIPO_COLEGIO" EntitySet="TIPO_COLEGIO" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_AFICION" Association="Self.FK_ESTUDIANTE_AFICION">
+            <End Role="AFICION" EntitySet="AFICION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_ASOCIACION" Association="Self.FK_ESTUDIANTE_ASOCIACION">
+            <End Role="ASOCIACION" EntitySet="ASOCIACION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_MOTIVACION" Association="Self.FK_ESTUDIANTE_MOTIVACION">
+            <End Role="MOTIVACION" EntitySet="MOTIVACION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_PLAN" Association="Self.FK_ESTUDIANTE_PLAN">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_CARRERA" Association="Self.FK_PLAN_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERA" />
+            <End Role="PLAN" EntitySet="PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MATERIA_MATERIA" Association="Self.FK_PLAN_MATERIA_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="PLAN_MATERIA" EntitySet="PLAN_MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MATERIA_PLAN" Association="Self.FK_PLAN_MATERIA_PLAN">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="PLAN_MATERIA" EntitySet="PLAN_MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PLANESTUDIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PLANESTUDIOEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AFICION" EntityType="PLANESTUDIOModel.AFICION" />
+          <EntitySet Name="ASOCIACION" EntityType="PLANESTUDIOModel.ASOCIACION" />
+          <EntitySet Name="CARRERA" EntityType="PLANESTUDIOModel.CARRERA" />
+          <EntitySet Name="COLEGIO" EntityType="PLANESTUDIOModel.COLEGIO" />
+          <EntitySet Name="ESTUDIANTE" EntityType="PLANESTUDIOModel.ESTUDIANTE" />
+          <EntitySet Name="FACULTAD" EntityType="PLANESTUDIOModel.FACULTAD" />
+          <EntitySet Name="LOG" EntityType="PLANESTUDIOModel.LOG" />
+          <EntitySet Name="MATERIA" EntityType="PLANESTUDIOModel.MATERIA" />
+          <EntitySet Name="MENSION" EntityType="PLANESTUDIOModel.MENSION" />
+          <EntitySet Name="MOTIVACION" EntityType="PLANESTUDIOModel.MOTIVACION" />
+          <EntitySet Name="PLAN" EntityType="PLANESTUDIOModel.PLAN" />
+          <EntitySet Name="PLAN_MATERIA" EntityType="PLANESTUDIOModel.PLAN_MATERIA" />
+          <EntitySet Name="ROL" EntityType="PLANESTUDIOModel.ROL" />
+          <EntitySet Name="TIPO_COLEGIO" EntityType="PLANESTUDIOModel.TIPO_COLEGIO" />
+          <EntitySet Name="USUARIO" EntityType="PLANESTUDIOModel.USUARIO" />
+          <AssociationSet Name="FK_ESTUDIANTE_AFICION" Association="PLANESTUDIOModel.FK_ESTUDIANTE_AFICION">
+            <End Role="AFICION" EntitySet="AFICION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_ASOCIACION" Association="PLANESTUDIOModel.FK_ESTUDIANTE_ASOCIACION">
+            <End Role="ASOCIACION" EntitySet="ASOCIACION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CARRERA_FACULTAD" Association="PLANESTUDIOModel.FK_CARRERA_FACULTAD">
+            <End Role="FACULTAD" EntitySet="FACULTAD" />
+            <End Role="CARRERA" EntitySet="CARRERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_CARRERA" Association="PLANESTUDIOModel.FK_PLAN_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERA" />
+            <End Role="PLAN" EntitySet="PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_ESTUDIANTE" Association="PLANESTUDIOModel.FK_COLEGIO_ESTUDIANTE">
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_MENSION" Association="PLANESTUDIOModel.FK_COLEGIO_MENSION">
+            <End Role="MENSION" EntitySet="MENSION" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLEGIO_TIPO_COLEGIO" Association="PLANESTUDIOModel.FK_COLEGIO_TIPO_COLEGIO">
+            <End Role="TIPO_COLEGIO" EntitySet="TIPO_COLEGIO" />
+            <End Role="COLEGIO" EntitySet="COLEGIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_MOTIVACION" Association="PLANESTUDIOModel.FK_ESTUDIANTE_MOTIVACION">
+            <End Role="MOTIVACION" EntitySet="MOTIVACION" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ESTUDIANTE_PLAN" Association="PLANESTUDIOModel.FK_ESTUDIANTE_PLAN">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MATERIA_MATERIA" Association="PLANESTUDIOModel.FK_PLAN_MATERIA_MATERIA">
+            <End Role="MATERIA" EntitySet="MATERIA" />
+            <End Role="PLAN_MATERIA" EntitySet="PLAN_MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MATERIA_PLAN" Association="PLANESTUDIOModel.FK_PLAN_MATERIA_PLAN">
+            <End Role="PLAN" EntitySet="PLAN" />
+            <End Role="PLAN_MATERIA" EntitySet="PLAN_MATERIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="PLANESTUDIOModel.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AFICION">
+          <Key>
+            <PropertyRef Name="AFI_ID" />
+          </Key>
+          <Property Name="AFI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AFI_NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ESTUDIANTE" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_AFICION" FromRole="AFICION" ToRole="ESTUDIANTE" />
+        </EntityType>
+        <EntityType Name="ASOCIACION">
+          <Key>
+            <PropertyRef Name="ASO_ID" />
+          </Key>
+          <Property Name="ASO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASO_NOM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ESTUDIANTE" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_ASOCIACION" FromRole="ASOCIACION" ToRole="ESTUDIANTE" />
+        </EntityType>
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="CAR_ID" />
+          </Key>
+          <Property Name="CAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAR_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAR_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FAC_ID" Type="Int32" />
+          <NavigationProperty Name="FACULTAD" Relationship="PLANESTUDIOModel.FK_CARRERA_FACULTAD" FromRole="CARRERA" ToRole="FACULTAD" />
+          <NavigationProperty Name="PLAN" Relationship="PLANESTUDIOModel.FK_PLAN_CARRERA" FromRole="CARRERA" ToRole="PLAN" />
+        </EntityType>
+        <EntityType Name="COLEGIO">
+          <Key>
+            <PropertyRef Name="COL_ID" />
+          </Key>
+          <Property Name="COL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="COL_CIUDAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TPC_ID" Type="Int32" />
+          <Property Name="COL_EMAIL_PERSONAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COL_ANIO_GRADO" Type="Int32" />
+          <Property Name="COL_PENSION" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COL_PUNTAJE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MEN_ID" Type="Int32" />
+          <Property Name="EST_ID" Type="Int32" />
+          <NavigationProperty Name="ESTUDIANTE" Relationship="PLANESTUDIOModel.FK_COLEGIO_ESTUDIANTE" FromRole="COLEGIO" ToRole="ESTUDIANTE" />
+          <NavigationProperty Name="MENSION" Relationship="PLANESTUDIOModel.FK_COLEGIO_MENSION" FromRole="COLEGIO" ToRole="MENSION" />
+          <NavigationProperty Name="TIPO_COLEGIO" Relationship="PLANESTUDIOModel.FK_COLEGIO_TIPO_COLEGIO" FromRole="COLEGIO" ToRole="TIPO_COLEGIO" />
+        </EntityType>
+        <EntityType Name="ESTUDIANTE">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_CEDULA" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="EST_NOMBRES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EST_APELLIDOS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EST_FNACIMIENTO" Type="DateTime" Precision="0" />
+          <Property Name="EST_SEXO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLA_ID" Type="Int32" />
+          <Property Name="EST_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EST_TEL_DOMICILIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EST_TEL_CELULAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EST_DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EST_OBSERVACION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AFI_ID" Type="Int32" />
+          <Property Name="ASO_ID" Type="Int32" />
+          <Property Name="MOT_ID" Type="Int32" />
+          <NavigationProperty Name="AFICION" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_AFICION" FromRole="ESTUDIANTE" ToRole="AFICION" />
+          <NavigationProperty Name="ASOCIACION" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_ASOCIACION" FromRole="ESTUDIANTE" ToRole="ASOCIACION" />
+          <NavigationProperty Name="COLEGIO" Relationship="PLANESTUDIOModel.FK_COLEGIO_ESTUDIANTE" FromRole="ESTUDIANTE" ToRole="COLEGIO" />
+          <NavigationProperty Name="MOTIVACION" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_MOTIVACION" FromRole="ESTUDIANTE" ToRole="MOTIVACION" />
+          <NavigationProperty Name="PLAN" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_PLAN" FromRole="ESTUDIANTE" ToRole="PLAN" />
+        </EntityType>
+        <EntityType Name="FACULTAD">
+          <Key>
+            <PropertyRef Name="FAC_ID" />
+          </Key>
+          <Property Name="FAC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAC_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FAC_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CARRERA" Relationship="PLANESTUDIOModel.FK_CARRERA_FACULTAD" FromRole="FACULTAD" ToRole="CARRERA" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOG_MODULO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_TRANSACCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_FECHA_REGISTRO" Type="DateTime" Precision="3" />
+          <Property Name="LOG_FECHA_EDICION" Type="DateTime" Precision="3" />
+          <Property Name="LOG_FECHA_ELIMINACION" Type="DateTime" Precision="3" />
+          <Property Name="LOG_DIRECCIONIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MATERIA">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Name="MAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_NIVEL" Type="Int32" />
+          <NavigationProperty Name="PLAN_MATERIA" Relationship="PLANESTUDIOModel.FK_PLAN_MATERIA_MATERIA" FromRole="MATERIA" ToRole="PLAN_MATERIA" />
+        </EntityType>
+        <EntityType Name="MENSION">
+          <Key>
+            <PropertyRef Name="MEN_ID" />
+          </Key>
+          <Property Name="MEN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEN_NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COLEGIO" Relationship="PLANESTUDIOModel.FK_COLEGIO_MENSION" FromRole="MENSION" ToRole="COLEGIO" />
+        </EntityType>
+        <EntityType Name="MOTIVACION">
+          <Key>
+            <PropertyRef Name="MOT_ID" />
+          </Key>
+          <Property Name="MOT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MOT_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ESTUDIANTE" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_MOTIVACION" FromRole="MOTIVACION" ToRole="ESTUDIANTE" />
+        </EntityType>
+        <EntityType Name="PLAN">
+          <Key>
+            <PropertyRef Name="PLA_ID" />
+          </Key>
+          <Property Name="PLA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLA_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLA_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CAR_ID" Type="Int32" />
+          <NavigationProperty Name="CARRERA" Relationship="PLANESTUDIOModel.FK_PLAN_CARRERA" FromRole="PLAN" ToRole="CARRERA" />
+          <NavigationProperty Name="ESTUDIANTE" Relationship="PLANESTUDIOModel.FK_ESTUDIANTE_PLAN" FromRole="PLAN" ToRole="ESTUDIANTE" />
+          <NavigationProperty Name="PLAN_MATERIA" Relationship="PLANESTUDIOModel.FK_PLAN_MATERIA_PLAN" FromRole="PLAN" ToRole="PLAN_MATERIA" />
+        </EntityType>
+        <EntityType Name="PLAN_MATERIA">
+          <Key>
+            <PropertyRef Name="PLM_ID" />
+          </Key>
+          <Property Name="PLM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLA_ID" Type="Int32" />
+          <Property Name="MAT_ID" Type="Int32" />
+          <NavigationProperty Name="MATERIA" Relationship="PLANESTUDIOModel.FK_PLAN_MATERIA_MATERIA" FromRole="PLAN_MATERIA" ToRole="MATERIA" />
+          <NavigationProperty Name="PLAN" Relationship="PLANESTUDIOModel.FK_PLAN_MATERIA_PLAN" FromRole="PLAN_MATERIA" ToRole="PLAN" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ROL_ID" />
+          </Key>
+          <Property Name="ROL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROL_NOMBRE" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="PLANESTUDIOModel.FK_USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TIPO_COLEGIO">
+          <Key>
+            <PropertyRef Name="TPC_ID" />
+          </Key>
+          <Property Name="TPC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TPC_NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COLEGIO" Relationship="PLANESTUDIOModel.FK_COLEGIO_TIPO_COLEGIO" FromRole="TIPO_COLEGIO" ToRole="COLEGIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USU_ID" />
+          </Key>
+          <Property Name="USU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USU_NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="USU_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USU_CONTRASENIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ROL_ID" Type="Int32" />
+          <NavigationProperty Name="ROL" Relationship="PLANESTUDIOModel.FK_USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
+        </EntityType>
+        <Association Name="FK_ESTUDIANTE_AFICION">
+          <End Type="PLANESTUDIOModel.AFICION" Role="AFICION" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.ESTUDIANTE" Role="ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AFICION">
+              <PropertyRef Name="AFI_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="AFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_ASOCIACION">
+          <End Type="PLANESTUDIOModel.ASOCIACION" Role="ASOCIACION" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.ESTUDIANTE" Role="ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASOCIACION">
+              <PropertyRef Name="ASO_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="ASO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CARRERA_FACULTAD">
+          <End Type="PLANESTUDIOModel.FACULTAD" Role="FACULTAD" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.CARRERA" Role="CARRERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTAD">
+              <PropertyRef Name="FAC_ID" />
+            </Principal>
+            <Dependent Role="CARRERA">
+              <PropertyRef Name="FAC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_CARRERA">
+          <End Type="PLANESTUDIOModel.CARRERA" Role="CARRERA" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.PLAN" Role="PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="CAR_ID" />
+            </Principal>
+            <Dependent Role="PLAN">
+              <PropertyRef Name="CAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_ESTUDIANTE">
+          <End Type="PLANESTUDIOModel.ESTUDIANTE" Role="ESTUDIANTE" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.COLEGIO" Role="COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTUDIANTE">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_MENSION">
+          <End Type="PLANESTUDIOModel.MENSION" Role="MENSION" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.COLEGIO" Role="COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENSION">
+              <PropertyRef Name="MEN_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="MEN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLEGIO_TIPO_COLEGIO">
+          <End Type="PLANESTUDIOModel.TIPO_COLEGIO" Role="TIPO_COLEGIO" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.COLEGIO" Role="COLEGIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_COLEGIO">
+              <PropertyRef Name="TPC_ID" />
+            </Principal>
+            <Dependent Role="COLEGIO">
+              <PropertyRef Name="TPC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_MOTIVACION">
+          <End Type="PLANESTUDIOModel.MOTIVACION" Role="MOTIVACION" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.ESTUDIANTE" Role="ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOTIVACION">
+              <PropertyRef Name="MOT_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="MOT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTUDIANTE_PLAN">
+          <End Type="PLANESTUDIOModel.PLAN" Role="PLAN" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.ESTUDIANTE" Role="ESTUDIANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="PLA_ID" />
+            </Principal>
+            <Dependent Role="ESTUDIANTE">
+              <PropertyRef Name="PLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MATERIA_MATERIA">
+          <End Type="PLANESTUDIOModel.MATERIA" Role="MATERIA" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.PLAN_MATERIA" Role="PLAN_MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATERIA">
+              <PropertyRef Name="MAT_ID" />
+            </Principal>
+            <Dependent Role="PLAN_MATERIA">
+              <PropertyRef Name="MAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MATERIA_PLAN">
+          <End Type="PLANESTUDIOModel.PLAN" Role="PLAN" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.PLAN_MATERIA" Role="PLAN_MATERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN">
+              <PropertyRef Name="PLA_ID" />
+            </Principal>
+            <Dependent Role="PLAN_MATERIA">
+              <PropertyRef Name="PLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Type="PLANESTUDIOModel.ROL" Role="ROL" Multiplicity="0..1" />
+          <End Type="PLANESTUDIOModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ROL_ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PLANESTUDIOModelStoreContainer" CdmEntityContainer="PLANESTUDIOEntities2">
+          <EntitySetMapping Name="AFICION">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.AFICION">
+              <MappingFragment StoreEntitySet="AFICION">
+                <ScalarProperty Name="AFI_NOMBRE" ColumnName="AFI_NOMBRE" />
+                <ScalarProperty Name="AFI_ID" ColumnName="AFI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASOCIACION">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.ASOCIACION">
+              <MappingFragment StoreEntitySet="ASOCIACION">
+                <ScalarProperty Name="ASO_NOM" ColumnName="ASO_NOM" />
+                <ScalarProperty Name="ASO_ID" ColumnName="ASO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARRERA">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.CARRERA">
+              <MappingFragment StoreEntitySet="CARRERA">
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+                <ScalarProperty Name="CAR_NOMBRE" ColumnName="CAR_NOMBRE" />
+                <ScalarProperty Name="CAR_CODIGO" ColumnName="CAR_CODIGO" />
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLEGIO">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.COLEGIO">
+              <MappingFragment StoreEntitySet="COLEGIO">
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="MEN_ID" ColumnName="MEN_ID" />
+                <ScalarProperty Name="COL_PUNTAJE" ColumnName="COL_PUNTAJE" />
+                <ScalarProperty Name="COL_PENSION" ColumnName="COL_PENSION" />
+                <ScalarProperty Name="COL_ANIO_GRADO" ColumnName="COL_ANIO_GRADO" />
+                <ScalarProperty Name="COL_EMAIL_PERSONAL" ColumnName="COL_EMAIL_PERSONAL" />
+                <ScalarProperty Name="TPC_ID" ColumnName="TPC_ID" />
+                <ScalarProperty Name="COL_CIUDAD" ColumnName="COL_CIUDAD" />
+                <ScalarProperty Name="COL_NOMBRE" ColumnName="COL_NOMBRE" />
+                <ScalarProperty Name="COL_ID" ColumnName="COL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTUDIANTE">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.ESTUDIANTE">
+              <MappingFragment StoreEntitySet="ESTUDIANTE">
+                <ScalarProperty Name="MOT_ID" ColumnName="MOT_ID" />
+                <ScalarProperty Name="ASO_ID" ColumnName="ASO_ID" />
+                <ScalarProperty Name="AFI_ID" ColumnName="AFI_ID" />
+                <ScalarProperty Name="EST_OBSERVACION" ColumnName="EST_OBSERVACION" />
+                <ScalarProperty Name="EST_DIRECCION" ColumnName="EST_DIRECCION" />
+                <ScalarProperty Name="EST_TEL_CELULAR" ColumnName="EST_TEL_CELULAR" />
+                <ScalarProperty Name="EST_TEL_DOMICILIO" ColumnName="EST_TEL_DOMICILIO" />
+                <ScalarProperty Name="EST_EMAIL" ColumnName="EST_EMAIL" />
+                <ScalarProperty Name="PLA_ID" ColumnName="PLA_ID" />
+                <ScalarProperty Name="EST_SEXO" ColumnName="EST_SEXO" />
+                <ScalarProperty Name="EST_FNACIMIENTO" ColumnName="EST_FNACIMIENTO" />
+                <ScalarProperty Name="EST_APELLIDOS" ColumnName="EST_APELLIDOS" />
+                <ScalarProperty Name="EST_NOMBRES" ColumnName="EST_NOMBRES" />
+                <ScalarProperty Name="EST_CEDULA" ColumnName="EST_CEDULA" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACULTAD">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.FACULTAD">
+              <MappingFragment StoreEntitySet="FACULTAD">
+                <ScalarProperty Name="FAC_NOMBRE" ColumnName="FAC_NOMBRE" />
+                <ScalarProperty Name="FAC_CODIGO" ColumnName="FAC_CODIGO" />
+                <ScalarProperty Name="FAC_ID" ColumnName="FAC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.LOG">
+              <MappingFragment StoreEntitySet="LOG">
+                <ScalarProperty Name="LOG_DIRECCIONIP" ColumnName="LOG_DIRECCIONIP" />
+                <ScalarProperty Name="LOG_FECHA_ELIMINACION" ColumnName="LOG_FECHA_ELIMINACION" />
+                <ScalarProperty Name="LOG_FECHA_EDICION" ColumnName="LOG_FECHA_EDICION" />
+                <ScalarProperty Name="LOG_FECHA_REGISTRO" ColumnName="LOG_FECHA_REGISTRO" />
+                <ScalarProperty Name="LOG_TRANSACCION" ColumnName="LOG_TRANSACCION" />
+                <ScalarProperty Name="LOG_USUARIO" ColumnName="LOG_USUARIO" />
+                <ScalarProperty Name="LOG_MODULO" ColumnName="LOG_MODULO" />
+                <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIA">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.MATERIA">
+              <MappingFragment StoreEntitySet="MATERIA">
+                <ScalarProperty Name="MAT_NIVEL" ColumnName="MAT_NIVEL" />
+                <ScalarProperty Name="MAT_NOMBRE" ColumnName="MAT_NOMBRE" />
+                <ScalarProperty Name="MAT_CODIGO" ColumnName="MAT_CODIGO" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENSION">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.MENSION">
+              <MappingFragment StoreEntitySet="MENSION">
+                <ScalarProperty Name="MEN_NOMBRE" ColumnName="MEN_NOMBRE" />
+                <ScalarProperty Name="MEN_ID" ColumnName="MEN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOTIVACION">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.MOTIVACION">
+              <MappingFragment StoreEntitySet="MOTIVACION">
+                <ScalarProperty Name="MOT_NOMBRE" ColumnName="MOT_NOMBRE" />
+                <ScalarProperty Name="MOT_ID" ColumnName="MOT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAN">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.PLAN">
+              <MappingFragment StoreEntitySet="PLAN">
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+                <ScalarProperty Name="PLA_NOMBRE" ColumnName="PLA_NOMBRE" />
+                <ScalarProperty Name="PLA_CODIGO" ColumnName="PLA_CODIGO" />
+                <ScalarProperty Name="PLA_ID" ColumnName="PLA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAN_MATERIA">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.PLAN_MATERIA">
+              <MappingFragment StoreEntitySet="PLAN_MATERIA">
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+                <ScalarProperty Name="PLA_ID" ColumnName="PLA_ID" />
+                <ScalarProperty Name="PLM_ID" ColumnName="PLM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ROL_NOMBRE" ColumnName="ROL_NOMBRE" />
+                <ScalarProperty Name="ROL_ID" ColumnName="ROL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_COLEGIO">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.TIPO_COLEGIO">
+              <MappingFragment StoreEntitySet="TIPO_COLEGIO">
+                <ScalarProperty Name="TPC_NOMBRE" ColumnName="TPC_NOMBRE" />
+                <ScalarProperty Name="TPC_ID" ColumnName="TPC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="PLANESTUDIOModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ROL_ID" ColumnName="ROL_ID" />
+                <ScalarProperty Name="USU_CONTRASENIA" ColumnName="USU_CONTRASENIA" />
+                <ScalarProperty Name="USU_USUARIO" ColumnName="USU_USUARIO" />
+                <ScalarProperty Name="USU_NOMBRE" ColumnName="USU_NOMBRE" />
+                <ScalarProperty Name="USU_ID" ColumnName="USU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿@model CapaNegocio.Entities.USUARIO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USU_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USU_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USU_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USU_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USU_CONTRASENIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USU_CONTRASENIA)
+        </dd>
+
+        <dt>
+           Rol
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROL.ROL_NOMBRE)
+        </dd>
+
+    </dl>
+</div>

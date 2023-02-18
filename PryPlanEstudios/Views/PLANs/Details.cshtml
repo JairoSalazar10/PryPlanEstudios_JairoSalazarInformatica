@@ -1,0 +1,36 @@
+﻿@model CapaNegocio.Entities.PLAN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div>
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PLA_CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLA_CODIGO)
+        </dd>
+        
+        <dt>
+           Plan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLA_NOMBRE)
+        </dd>
+
+        <dt>
+           Carrera
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARRERA.CAR_NOMBRE)
+        </dd>
+
+    </dl>
+</div>

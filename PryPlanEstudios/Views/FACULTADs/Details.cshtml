@@ -1,0 +1,30 @@
+﻿@model CapaNegocio.Entities.FACULTAD
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FAC_CODIGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAC_CODIGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAC_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAC_NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+

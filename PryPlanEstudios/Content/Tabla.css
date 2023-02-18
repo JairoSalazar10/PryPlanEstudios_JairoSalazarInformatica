@@ -1,0 +1,12 @@
+﻿.tablamargen {
+max-width: 600px;
+margin: 0 auto;
+}
+#tabla_filt th, td {
+white-space: nowrap;
+}
+
+
+.scrollme {
+    overflow-y: auto;
+}

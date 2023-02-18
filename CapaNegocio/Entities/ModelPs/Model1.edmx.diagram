@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ad97fa880254465b1f33cede4a445a0" Name="Diagram1">
+        <EntityTypeShape EntityType="PLANESTUDIOModel.AFICION" Width="1.5" PointX="5.25" PointY="11.25" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.ASOCIACION" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.CARRERA" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.COLEGIO" Width="1.5" PointX="12.75" PointY="5" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.ESTUDIANTE" Width="1.5" PointX="7.5" PointY="4.25" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.FACULTAD" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.LOG" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.MATERIA" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.MENSION" Width="1.5" PointX="10.5" PointY="2.75" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.MOTIVACION" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.PLAN" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.PLAN_MATERIA" Width="1.5" PointX="10.5" PointY="5.75" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.ROL" Width="1.5" PointX="7.75" PointY="12" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.TIPO_COLEGIO" Width="1.5" PointX="10.5" PointY="9.125" />
+        <EntityTypeShape EntityType="PLANESTUDIOModel.USUARIO" Width="1.5" PointX="10" PointY="11.625" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_ESTUDIANTE_AFICION" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_ESTUDIANTE_ASOCIACION" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_CARRERA_FACULTAD" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_PLAN_CARRERA" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_COLEGIO_ESTUDIANTE" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_COLEGIO_MENSION" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_COLEGIO_TIPO_COLEGIO" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_ESTUDIANTE_MOTIVACION" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_ESTUDIANTE_PLAN" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_PLAN_MATERIA_MATERIA" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_PLAN_MATERIA_PLAN" />
+        <AssociationConnector Association="PLANESTUDIOModel.FK_USUARIO_ROL" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

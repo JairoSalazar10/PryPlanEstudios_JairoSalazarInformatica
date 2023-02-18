@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CapaNegocio.Entities.PLAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Plan</h2>
+<hr />
+<p>
+    <div class="panel-body text-right">
+        <a class="btn btn-primary btn-sm" onclick="Crear()" data-toggle="modal" data-target=".bs-example-modal-md">
+            <i class="fa fa-plus fa-fw"></i> Nuevo
+        </a>
+    </div>
+</p>
+<table class="table table-striped table-condensed table-bordered table-hover" style="width:100%" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CARRERA.CAR_CODIGO)
+            </th>
+            <th>
+               Plan
+            </th>
+            <th>
+               Carrera
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CARRERA.CAR_CODIGO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PLA_NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CARRERA.CAR_NOMBRE)
+                </td>
+                <td>
+                    <a class="btn btn-info btn-xs" onclick="Detalles(@item.PLA_ID)" data-toggle="modal" data-placement="top" data-original title="Detalles" data-target=".bs-example-modal-md">
+                        <i class="fa fa-file-text-o fa-fw"></i>
+                    </a>
+                    <a class="btn btn-success btn-xs" onclick="Modificar(@item.PLA_ID)" data-toggle="modal" data-placement="top" data-original title="Editar" data-target=".bs-example-modal-md">
+                        <i class="fa fa-edit fa-fw"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs" onclick="Eliminar(@item.PLA_ID)" data-toggle="modal" data-placement="top" data-original title="Eliminar" data-target=".bs-example-modal-md">
+                        <i class="fa fa-trash fa-fw"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+</table>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        //Modal
+        var id_modal = $('#modal-system');
+        var modal_head = $('#modal-system .modal-header h4')
+        var modal_body = $('#modal-system .modal-body')
+
+        function Crear() {
+            modal_body.html("");
+            modal_body.load('@Url.Action("Create")', function () {
+                modal_head.html("Nuevo registro");
+            });
+        }
+
+        function Modificar(id) {
+            modal_body.html("");
+            modal_body.load('@Url.Action("Edit")' + '?id=' + id, function () {
+                modal_head.html("Editar registro");
+            })
+        }
+
+        function Eliminar(id) {
+            modal_body.html("");
+            modal_body.load('@Url.Action("Delete")' + '?id=' + id, function () {
+                modal_head.html("Eliminar registro");
+            })
+        }
+
+        function Detalles(id) {
+            modal_body.html("");
+            modal_body.load('@Url.Action("Details")' + '?id=' + id, function () {
+                modal_head.html("Detalles del registro");
+            })
+        }
+    </script>
+
+}
